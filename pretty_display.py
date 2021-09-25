@@ -22,7 +22,6 @@ with open('output.txt', 'r') as f:
     count = 0
     for line in lines:
         if line.startswith('$'):
-            #prices.append(line)
             simplifiedPrice = line.replace('$','')     
             simplifiedPrice = simplifiedPrice.replace('\n','')
             prices.append(simplifiedPrice)
@@ -43,4 +42,3 @@ with open('output.txt', 'r') as f:
         print("{:{x}} ${:>{y}}".format(titles[x].strip(), prices[x].strip(), x=max_title_length, y=max_price_length))
 
     print("{:>{x}} ${:{y}.2f}".format("Total Cost:", round(totalCost, 2), x=max_title_length, y=max_price_length))
-    print("Max string length =", max_title_length)

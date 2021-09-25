@@ -17,12 +17,6 @@ from bs4 import BeautifulSoup
 with open('hyperlinks.txt', 'r') as f:
     URL_list = f.readlines()
 
-# create lists to handle data
-titles = []
-prices = []
-#total_cost = 0.0;
-#print(total_cost)
-
 # open each URL
 for URL in URL_list:
     page = requests.get(URL)
@@ -32,20 +26,7 @@ for URL in URL_list:
     title_element = soup.find(class_="product-details-full-content-header-title")
     price_element = soup.find(class_="product-views-price-lead")
 
-    # add new data to the arrays
-    titles.append(title_element.text.strip())
-    prices.append(price_element.text.strip())
-
-    # sum total cost
-    #base_price = (price_element.text.strip()).replace('$',''))
-    #stripped_price = price_element.text.strip().replace('$',' ')
-    #print(stripped_price)
-    #total_cost = total_cost + float(stripped_price)
-    #print(total_cost)
-
-
-# print arrays
-# TODO: adjust title array padding to be [length + 1] of longest title
-for t, p in zip(titles, prices):
-    print('{:80} {:20}'.format(t, p))
-
+    # Display results
+    print(title_element.text.strip())
+    print(price_element.text.strip())
+    print()
